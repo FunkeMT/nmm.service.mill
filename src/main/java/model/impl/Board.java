@@ -1,7 +1,7 @@
-package main.java.model.impl;
+package model.impl;
 
-import main.java.model.IBoard;
-import main.java.model.IJunction;
+import model.IBoard;
+import model.IJunction;
 
 import java.util.HashMap;
 import java.util.Map;

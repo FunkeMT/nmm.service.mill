@@ -1,4 +1,4 @@
-package main.java.controller.impl;
+package controller.impl;
 
 import akka.http.javadsl.model.ContentTypes;
 import akka.http.javadsl.model.HttpEntities;
@@ -7,12 +7,12 @@ import akka.http.javadsl.server.Route;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
-import main.java.controller.IJsonController;
-import main.java.model.IJunction;
-import main.java.model.IPlayer;
-import main.java.model.impl.Board;
-import main.java.model.impl.Player;
-import main.java.model.impl.Puck;
+import controller.IJsonController;
+import model.IJunction;
+import model.IPlayer;
+import model.impl.Board;
+import model.impl.Player;
+import model.impl.Puck;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

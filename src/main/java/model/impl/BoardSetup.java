@@ -1,4 +1,4 @@
-package main.java.model.impl;
+package model.impl;
 
 public abstract class BoardSetup {
 

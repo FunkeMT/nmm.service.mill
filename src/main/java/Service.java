@@ -1,6 +1,4 @@
-package main.java;
-
-import main.java.aview.http.HttpServer;
+import aview.http.HttpServer;
 
 import java.util.Scanner;
 

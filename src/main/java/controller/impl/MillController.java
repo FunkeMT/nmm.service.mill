@@ -1,7 +1,7 @@
-package main.java.controller.impl;
+package controller.impl;
 
-import main.java.model.IJunction;
-import main.java.model.IPlayer;
+import model.IJunction;
+import model.IPlayer;
 
 import java.lang.reflect.Method;
 

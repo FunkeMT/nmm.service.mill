@@ -1,8 +1,8 @@
-package main.java.model.impl;
+package model.impl;
 
-import main.java.model.IJunction;
-import main.java.model.IPlayer;
-import main.java.model.IPuck;
+import model.IJunction;
+import model.IPlayer;
+import model.IPuck;
 
 import javax.swing.*;
 import java.awt.*;

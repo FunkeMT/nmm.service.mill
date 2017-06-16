@@ -1,10 +1,10 @@
-package main.java.model.impl;
+package model.impl;
 
-import main.java.model.IJunction;
-import main.java.model.IPlayer;
-import main.java.model.IPlayerState;
-import main.java.model.IPuck;
-import main.java.util.NmmRuntimeException;
+import model.IJunction;
+import model.IPlayer;
+import model.IPlayerState;
+import model.IPuck;
+import util.NmmRuntimeException;
 
 public class PlayerMOVE implements IPlayerState {
 

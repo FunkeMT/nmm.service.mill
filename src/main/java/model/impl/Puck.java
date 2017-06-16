@@ -1,7 +1,7 @@
-package main.java.model.impl;
+package model.impl;
 
-import main.java.model.IPlayer;
-import main.java.model.IPuck;
+import model.IPlayer;
+import model.IPuck;
 
 public class Puck implements IPuck {
 

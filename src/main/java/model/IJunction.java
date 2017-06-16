@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;

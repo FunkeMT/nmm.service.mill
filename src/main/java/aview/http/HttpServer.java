@@ -1,4 +1,4 @@
-package main.java.aview.http;
+package aview.http;
 
 import akka.NotUsed;
 import akka.actor.ActorSystem;
@@ -11,10 +11,11 @@ import akka.http.javadsl.server.Route;
 import akka.http.javadsl.unmarshalling.Unmarshaller;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import main.java.controller.IJsonController;
-import main.java.controller.impl.JsonController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import controller.IJsonController;
+import controller.impl.JsonController;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
