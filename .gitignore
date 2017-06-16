@@ -1,0 +1,29 @@
+## Meta Data
+META-INF/
+## intellij
+*.iml
+target/
+
+## MySQL Workbench
+*.bak
+
+## logger
+*.log
+*.log.*
+
+## Directory-based project format:
+.idea/
+out/
+
+## File-based project format:
+*.ipr
+*.iws
+
+## db4o Database File
+*.data
+
+# Mac
+.DS_Store
+
+# Build
+build/
