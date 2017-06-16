@@ -10,24 +10,7 @@ import java.lang.reflect.Method;
  */
 public class MillController {
 
-//    private final GameController gameController;
-//
-//    public MillController(GameController gameController) {
-//        this.gameController = gameController;
-//    }
-//
-//    public void millAfterMove(IJunction j) {
-//        if (checkformill(j, gameController.getCurrentIPlayer())) {
-//            gameController.addStatusMessage("Congratulations, Sir!\n" +
-//                    "You may now pick one of your opponents pucks that is not part of a mill.");
-//            gameController.getCurrentIPlayer().setStatus(gameController.getCurrentIPlayer().getPICK());
-//        } else {
-//            gameController.changePlayer();
-//        }
-//    }
-
-    // public to be testable TODO
-    public boolean checkformill(IJunction j, IPlayer p) {
+    public static boolean checkformill(IJunction j, IPlayer p) {
         int mill = -1;
         mill += checkformillR(j, 0, "Down", p);
         mill += checkformillR(j, 0, "Up", p);
@@ -44,7 +27,7 @@ public class MillController {
         return false;
     }
 
-    private int checkformillR(IJunction j, int sum, String direction, IPlayer p) {
+    private static int checkformillR(IJunction j, int sum, String direction, IPlayer p) {
         int t = 1;
         Method method;
 

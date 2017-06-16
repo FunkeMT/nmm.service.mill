@@ -48,8 +48,10 @@ public class JsonController implements IJsonController {
         // iterate over board and set junctions from Json
         JsonNode jsonBoard = json.findPath("board");
         for (Map.Entry<String, IJunction> entry : boardMap.entrySet()) {
-            JsonNode nodeJunction = json.path(entry.getKey());
+            JsonNode nodeJunction = json.findPath(entry.getKey());
+            System.out.println("current node - " + nodeJunction.textValue());
             if (nodeJunction.has("man")) {
+                System.out.println("node has man ...");
                 String strMan = nodeJunction.path("man").textValue();
 
                 if (strMan.equals(IPlayer.Man.BLACK.name())) {
@@ -63,6 +65,17 @@ public class JsonController implements IJsonController {
                 boardMap.put(entry.getKey(), entry.getValue());
             }
         }
+        System.out.println(boardMap.get("d1").toString());
+
+
+        // get move
+        JsonNode jsonMove = json.findPath("move");
+        String strMan = jsonMove.findPath("man").textValue();
+        String strJunction = jsonMove.findPath("junction").textValue();
+        IPlayer currPlayer = strMan.equals(IPlayer.Man.BLACK.name()) ? black : white;
+
+        boolean mill = MillController.checkformill(boardMap.get(strJunction), currPlayer);
+        System.out.printf(mill ? "true" : "false");
 
 
 

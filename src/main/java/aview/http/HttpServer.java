@@ -44,7 +44,7 @@ public class HttpServer extends AllDirectives {
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
                 ConnectHttp.toHost("localhost", 8081), materializer);
 
-        this.logger.debug("Server online at http://localhost:8081/\nPress RETURN to stop...");
+        System.out.println("Server online at http://localhost:8081/\nPress RETURN to stop...");
         try {
             System.in.read(); // let it run until user presses return
         } catch (IOException e) {
