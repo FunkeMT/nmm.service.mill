@@ -1,23 +1,19 @@
 package main.java.controller.impl;
 
-import akka.http.javadsl.model.*;
-import akka.http.javadsl.model.ContentTypes;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Route;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import main.java.controller.IJsonController;
-import main.java.model.IBoard;
 import main.java.model.IJunction;
 import main.java.model.IPlayer;
 import main.java.model.impl.Board;
-import main.java.model.impl.Junction;
 import main.java.model.impl.Player;
 import main.java.model.impl.Puck;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static akka.http.javadsl.server.Directives.complete;
@@ -25,12 +21,16 @@ import static akka.http.javadsl.server.Directives.complete;
 
 public class JsonController implements IJsonController {
 
+    private static final Logger logger = LogManager.getLogger(JsonController.class.getName());
+
     public JsonController() {
 
     }
 
     @Override
     public Route checkMill(String jsonStr) throws IllegalArgumentException {
+        this.logger.info("Incoming checkMill call ...");
+
         // convert string to JsonNode
         ObjectMapper mapper = new ObjectMapper();
         JsonNode json = null;
@@ -49,9 +49,9 @@ public class JsonController implements IJsonController {
         JsonNode jsonBoard = json.findPath("board");
         for (Map.Entry<String, IJunction> entry : boardMap.entrySet()) {
             JsonNode nodeJunction = json.findPath(entry.getKey());
-            System.out.println("current node - " + nodeJunction.textValue());
+
             if (nodeJunction.has("man")) {
-                System.out.println("node has man ...");
+                this.logger.debug("nodeJunction has man ...");
                 String strMan = nodeJunction.path("man").textValue();
 
                 if (strMan.equals(IPlayer.Man.BLACK.name())) {
@@ -65,7 +65,6 @@ public class JsonController implements IJsonController {
                 boardMap.put(entry.getKey(), entry.getValue());
             }
         }
-        System.out.println(boardMap.get("d1").toString());
 
 
         // get move
@@ -75,9 +74,8 @@ public class JsonController implements IJsonController {
         IPlayer currPlayer = strMan.equals(IPlayer.Man.BLACK.name()) ? black : white;
 
         boolean mill = MillController.checkformill(boardMap.get(strJunction), currPlayer);
+        this.logger.info("mill = " + (mill ? "true" : "false"));
         System.out.printf(mill ? "true" : "false");
-
-
 
         return complete(StatusCodes.OK);
     }

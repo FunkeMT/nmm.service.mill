@@ -11,8 +11,6 @@ import akka.http.javadsl.server.Route;
 import akka.http.javadsl.unmarshalling.Unmarshaller;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import main.java.controller.IJsonController;
 import main.java.controller.impl.JsonController;
 import org.apache.logging.log4j.LogManager;
@@ -21,14 +19,13 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
-@Singleton
+
 public class HttpServer extends AllDirectives {
 
     private final IJsonController jsonController;
 
     private static final Logger logger = LogManager.getLogger(HttpServer.class.getName());
 
-    @Inject
     public HttpServer() {
         this.jsonController = new JsonController();
     }
@@ -44,7 +41,7 @@ public class HttpServer extends AllDirectives {
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
                 ConnectHttp.toHost("localhost", 8081), materializer);
 
-        System.out.println("Server online at http://localhost:8081/\nPress RETURN to stop...");
+        this.logger.info("Server online at http://localhost:8081/\nPress RETURN to stop...");
         try {
             System.in.read(); // let it run until user presses return
         } catch (IOException e) {
