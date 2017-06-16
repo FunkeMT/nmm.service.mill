@@ -1,9 +1,12 @@
 package main.java.controller.impl;
 
+import akka.http.javadsl.model.ContentTypes;
+import akka.http.javadsl.model.HttpEntities;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Route;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import main.java.controller.IJsonController;
 import main.java.model.IJunction;
 import main.java.model.IPlayer;
@@ -75,8 +78,16 @@ public class JsonController implements IJsonController {
 
         boolean mill = MillController.checkformill(boardMap.get(strJunction), currPlayer);
         this.logger.info("mill = " + (mill ? "true" : "false"));
-        System.out.printf(mill ? "true" : "false");
 
-        return complete(StatusCodes.OK);
+
+        // build json response
+        JsonObject response = new JsonObject();
+        response.addProperty("mill", mill);
+
+
+        return complete(
+                StatusCodes.OK,
+                HttpEntities.create(ContentTypes.APPLICATION_JSON, response.toString())
+        );
     }
 }
