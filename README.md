@@ -28,5 +28,5 @@
     ```
     * interactive
     ```
-    docker start -a mill-srv
+    docker start -a mill-srv-i
     ```
