@@ -15,7 +15,7 @@
     
     * start in foreground and interactive: 
     ```
-    docker run -i -a stdout -p 8081:8081 --name mill-srv  nmm:mill-service
+    docker run -i -a stdout -p 8081:8081 --name mill-srv-i  nmm:mill-service
     ```
 * stop docker container
     ```
