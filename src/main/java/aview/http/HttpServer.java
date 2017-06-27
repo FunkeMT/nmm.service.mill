@@ -19,6 +19,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
+import static akka.http.javadsl.server.Directives.complete;
+
 
 public class HttpServer extends AllDirectives {
 
@@ -60,6 +62,10 @@ public class HttpServer extends AllDirectives {
                 path("checkMill", () ->
                         post(() -> entity(Unmarshaller.entityToString(), content ->
                                 this.jsonController.checkMill(content)))
+                ),
+
+                path("hello", () ->
+                        get(() -> complete(StatusCodes.OK))
                 )
 
         );
